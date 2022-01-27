@@ -24,7 +24,7 @@ fn main() {
                 continue;
             }
 
-            println!("What about {}, in pos {}, was it found? (n -> nowhere, ! -> elsewhere, y -> here)", c, i + 1);
+            println!("What about {}, in pos {}, was it found? (n -> nowhere, e -> elsewhere, y -> here)", c, i + 1);
             
             //read a single char from stdin
             let mut input = String::new();
@@ -35,7 +35,7 @@ fn main() {
                 "n" => {
                     words.retain(|word| !word.contains(c));
                 },
-                "!" => {
+                "e" => {
                     words.retain(|word| word.contains(c) && word.find(c).unwrap() != i as usize);
                 },
                 "y" => {
