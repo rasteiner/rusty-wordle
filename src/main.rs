@@ -22,14 +22,12 @@ fn main() {
         // first word
         let first = words[0].clone();
         strong(format!("try {}", first).as_str());
-        
 
         //for every character in the first word
         for (i, c) in first.chars().enumerate() {
             if !ask_about[i] {
                 continue;
             }
-
             
             loop {
                 println!("What about {}, in pos {}, was it found? (n -> nowhere, e -> elsewhere, y -> here)", c, i + 1);
@@ -42,11 +40,11 @@ fn main() {
                         break
                     },
                     "e" => {
-                        words.retain(|word| match word.find(c) { Some(inword) => inword as usize != i, None => false } );
+                        words.retain(|word| word.contains(c) && word.chars().nth(i).unwrap() != c );
                         break
                     },
                     "y" => {
-                        words.retain(|word| match word.find(c) { Some(inword) => inword as usize == i, None => false } );
+                        words.retain(|word| word.chars().nth(i).unwrap() == c );
                         ask_about[i] = false;
                         break
                     },
