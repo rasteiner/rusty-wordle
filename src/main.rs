@@ -36,7 +36,12 @@ fn main() {
                 let input = input.trim();
                 match input {
                     "n" => {
-                        words.retain(|word| !word.contains(c));
+                        for j in 0..5 {
+                            if ask_about[j] {
+                                words.retain(|word| word.chars().nth(j).unwrap() != c);
+                            }
+                        }
+
                         break
                     },
                     "e" => {
