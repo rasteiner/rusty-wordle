@@ -45,7 +45,31 @@ fn main() {
                         break
                     },
                     "e" => {
-                        words.retain(|word| word.contains(c) && word.chars().nth(i).unwrap() != c );
+                        words.retain(|word| {
+
+                            for j in 0..5 {
+                                if !ask_about[j] {
+                                    continue;
+                                }
+                                
+                                let c2 = word.chars().nth(j).unwrap();
+                                
+                                if j == i {
+                                    if c2 == c {
+                                        //c should not be found here
+                                        return false;
+                                    }
+                                } else {
+                                    if c2 == c {
+                                        //c should be found elsewhere
+                                        return true;
+                                    }
+                                }
+                            }
+
+                            //if c was not found anywhere...
+                            return false
+                        });
                         break
                     },
                     "y" => {
