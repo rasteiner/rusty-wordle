@@ -51,19 +51,11 @@ fn main() {
                                 if !ask_about[j] {
                                     continue;
                                 }
-                                
+
                                 let c2 = word.chars().nth(j).unwrap();
                                 
-                                if j == i {
-                                    if c2 == c {
-                                        //c should not be found here
-                                        return false;
-                                    }
-                                } else {
-                                    if c2 == c {
-                                        //c should be found elsewhere
-                                        return true;
-                                    }
+                                if c2 == c {
+                                    return j != i;
                                 }
                             }
 
